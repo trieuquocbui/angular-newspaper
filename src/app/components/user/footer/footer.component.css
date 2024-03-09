@@ -1,0 +1,46 @@
+.footer{
+    margin-top: 60px;
+    padding: 0 100px;
+    z-index: 10;
+    background-color: var(--white-color);
+}
+
+.footer_body{
+    padding: 30px 0;
+}
+
+.footer_title{
+    font-size:16px;
+    text-transform:uppercase;
+    font-weight: 500;
+    margin-bottom:20px;
+    letter-spacing:2px
+}
+
+.footer_body_about p{
+    line-height: 20px;
+    text-align: justify;
+}
+
+.footer_body_contact_infor:not(:last-child){
+    margin-bottom: 20px;
+    line-height: 20px;
+}
+
+
+.list_contact{
+    
+}
+
+.item_contact{
+    margin-bottom: 20px;
+}
+
+.item_contact a{
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.item_contact a:hover{
+    text-decoration: underline;
+}

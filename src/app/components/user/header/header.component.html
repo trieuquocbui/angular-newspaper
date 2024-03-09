@@ -1,0 +1,27 @@
+<header class="header">
+    <div class="grid wide">
+        <div class="row">
+            <div class="col l-7 header_left">
+                <div class="row">
+                    <div class="col l-3">
+                        <a href="" class="header_left_logo">
+                            <img class="header_left_logo_img" src="assets/images/ic_logo_web.png" alt="">
+                        </a>
+                    </div>
+                    <nav class="col l-9">
+                        <div class="header_left_menu" >
+                            <a class="header_left_menu_item" ariaCurrentWhenActive="page" [routerLink]="'home'" routerLinkActive="active"><i class="fa-solid fa-house"></i> Trang chủ</a> 
+                            <a class="header_left_menu_item" [routerLink]="'hot-news'" routerLinkActive="active"><i class="fa-solid fa-newspaper"></i>Tin nổi bật</a>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            <div class="col l-5 header_right">
+                <div class="header_right_menu" >
+                    <a class="header_right_menu_item" ariaCurrentWhenActive="page" [routerLink]="'login'" routerLinkActive="active">Đăng nhập</a> 
+                    <a class="header_right_menu_item" [routerLink]="'register'" routerLinkActive="active">Đăng kí</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

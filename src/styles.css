@@ -1,1 +1,222 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@fortawesome/fontawesome-free/css/all.css";
+* {
+	box-sizing: border-box;
+  }
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	color: var(--text-color);
+	font-family: 'Roboto';
+	line-height: 1;
+    background-color: var(--white-background-color);
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+:root{
+	--one-primary-color:#4f79c4;
+	--two-primary-color:#28489d;
+	--active-color:#3347a0;
+	--hover-color:#26469b;
+	--white-color:#fff;
+	--white-background-color:#f7f7f7;
+	--header-height:74px;
+	--text-color: #363636;
+	--border-color:#d8d8d8;
+	--btn-color:#26469b;
+	--topic-set-text-color:#5468a0;
+}
+
+.mt-30{
+	margin-top: 30px;
+}
+
+.grid{
+	display: block;
+	width: 100%;
+	padding: 0;
+}
+
+.grid.wide{
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    /* margin-left: -6px;
+    margin-right: -6px; */
+}
+
+.row-offset-8 {
+	display: flex;
+    flex-wrap: nowrap;
+    margin-left: -8px;
+    margin-right: -8px;
+}
+
+.col-offset-8 {
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.row-offset-20 {
+	display: flex;
+    flex-wrap: wrap;
+    margin-left: -20px;
+    margin-right: -20px;
+}
+
+.col-offset-20 {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.row-offset-8-4 {
+	display: flex;
+    flex-wrap: wrap;
+    margin: -8px -4px;
+}
+
+.col-offset-8-4 {
+    padding: 8px 4px;
+}
+
+.col {
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+.l-1 {
+	flex: 0 0 8.33333%;
+	max-width: 8.33333%;
+}
+
+.l-2 {
+	flex: 0 0 16.66667%;
+	max-width: 16.66667%;
+}
+
+.l-2-o-6 {
+	flex: 0 0 20.83333%;
+	max-width: 20.83333%;
+}
+
+.l-3 {
+	flex: 0 0 25%;
+	max-width: 25%;
+}
+
+.l-2-o-4{
+	flex: 0 0 20%;
+	max-width: 20%;
+}
+
+.l-4 {
+	flex: 0 0 33.33333%;
+	max-width: 33.33333%;
+}
+
+.l-5 {
+	flex: 0 0 41.66667%;
+	max-width: 41.66667%;
+}
+
+.l-6 {
+	flex: 0 0 50%;
+	max-width: 50%;
+}
+
+.l-7 {
+	flex: 0 0 58.33333%;
+	max-width: 58.33333%;
+}
+
+.l-8 {
+	flex: 0 0 66.66667%;
+	max-width: 66.66667%;
+}
+
+.l-9 {
+	flex: 0 0 75%;
+	max-width: 75%;
+}
+
+.l-10 {
+	flex: 0 0 83.33333%;
+	max-width: 83.33333%;
+}
+
+.l-11 {
+	flex: 0 0 91.66667%;
+	max-width: 91.66667%;
+}
+
+.l-12 {
+	flex: 0 0 100%;
+	max-width: 100%;
+}
+
+.btn{
+	opacity: .9;
+	font-weight: 300;
+	border: none;
+	outline: none;
+	border-radius: 10px;
+	font-size: 16px;
+	padding: 8px;
+	color: var(--white-color);
+	background-color: var(--btn-color);
+}
+
+.btn:hover{
+	opacity: 0.8;
+}
+
+.btn i{
+	margin-right: 8px;
+}
+
+.p-r-10{
+	padding-right: 10px;
+
+}
