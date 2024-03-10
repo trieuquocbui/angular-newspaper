@@ -220,3 +220,136 @@ table {
 	padding-right: 10px;
 
 }
+
+.login-register{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--white-background-color);
+}
+
+.form{
+    border: 1px solid #ced4da;
+    width: 600px;
+    border-radius: 10px;
+    padding: 60px;
+    background-color: var(--white-color);
+    /* background: linear-gradient(30deg, var(--one-primary-color), var(--two-primary-color)); */
+}
+
+.form_controller:not(:last-child){
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.form_controller_lable{
+    
+}
+
+.form_controller_input{
+    
+    font-size: 16px;
+    border: 0.5px solid #ced4da;
+    border-radius: 20px;
+    padding: 10px 10px 10px 40px;
+}
+
+.form_controller_icon{
+    position: absolute;
+    left: 16px;
+    bottom: 14px;
+}
+
+.form_controller_input:focus{
+    outline: none;
+    border: 0.5px solid var(--one-primary-color);
+}
+
+.btn_enter{
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+    color: var(--white-color);
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    padding: 10px;
+    background-color: var(--one-primary-color);
+}
+
+.btn_login:hover{
+    background-color: var(--two-primary-color);
+}
+
+.form_controller.remember{
+    align-items: center;
+    flex-direction: row;
+}
+
+.form_controller.remember .form_controller_input{
+    height: 100%;
+    margin: 2px 0px 0px 4px;
+}
+
+.register_login_page{
+    display: flex;
+    justify-content: end;
+}
+.register_login_link{
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.register_link:hover{
+    text-decoration: underline;
+}
+
+.or{
+    color: var(--one-primary-color);
+    margin: 6px 0px;
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    text-decoration: underline;
+}
+
+.social_media_list{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.social_media{
+    position: relative;
+}
+
+.social_media i,.social_media .gg{
+    position: absolute;
+    left: 10px;
+    bottom: 12px;
+}
+
+.fb{
+    color: #0866ff;
+}
+
+.gg{
+    height: 16px;
+    width: 16px;
+}
+
+.social_media button{
+    cursor: pointer;
+    font-size: 14px;
+    background-color: var(--white-color);
+    outline: none;
+    border-radius: 5px;
+    border: 0.5px solid #ced4da;
+    padding: 10px 20px 10px 30px;
+}
