@@ -305,7 +305,7 @@ table {
     color: var(--text-color);
 }
 
-.register_link:hover{
+.register_login_link:hover{
     text-decoration: underline;
 }
 

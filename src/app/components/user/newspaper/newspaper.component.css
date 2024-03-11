@@ -1,0 +1,136 @@
+.back_before_page{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.back_before_page i{
+    font-size: 14px;
+    margin-right: 4px;
+}
+
+.other_newspaper_set_title, .back_before_page{
+    margin-bottom: 20px;
+}
+
+.other_newspaper_set{
+    border: 1px solid var(--border-color);
+    background-color: var(--white-color);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.other_newspaper:last-child{
+    margin-bottom: 20px;
+}
+
+.other_newspaper{
+    margin-left: 20px;
+    margin-right: 20px;
+    color: var(--text-color);
+    text-decoration: none;
+    line-height: 20px;
+    margin-top: 20px;
+    display: block;
+    cursor: pointer;
+}
+.other_newspaper_image{
+    border-radius: 10px;
+    width: 100%;
+    aspect-ratio: 11 / 6;
+    object-fit: cover;
+}
+.other_newspaper_article-info{
+
+}
+
+.other_newspaper_title{
+    margin-top: 5px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 4px;
+}
+
+.other_newspaper_orgin, .other_newspaper_time-up{
+    font-size: 12px;
+    color: #797979;
+}
+
+.other_newspaper_orgin{
+    float: left;
+}
+
+.other_newspaper_time-up{
+    float: right;
+}
+
+.box_newspaper{
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    background-color: var(--white-color);
+}
+
+.newspaper{
+
+}
+.newspaper_title{
+    line-height: 40px;
+    font-weight: 500;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+.newspaper_time-up{
+    margin-bottom: 20px;
+}
+.newspaper_conent{
+
+}
+
+.paragraph{
+    margin-bottom: 20px;
+}
+.paragraph_image{
+    display: flex;
+    justify-content: center;
+}
+
+.paragraph_image img{
+    width: 600px;
+    aspect-ratio: 11 / 7;
+}
+
+.paragraph_fig_caption{
+    margin-top: 10px;
+    font-size: 14px;
+    text-align: center;
+}
+.paragraph_body{
+    margin-top: 20px;
+    font-size: 1.2em;
+    line-height: 1.4;
+    text-align: justify;
+    width: 100%;
+    color: #505050;
+}
+
+.newspaper_footer{
+    display: flex;
+    justify-content: space-between;
+}
+.newspaper_footer_origin a{
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.newspaper_footer_origin a:hover{
+    text-decoration:underline;
+}
+
+.newspaper_footer_author{
+    font-size: 18px;
+    font-weight: 600;
+}

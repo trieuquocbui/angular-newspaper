@@ -7,7 +7,9 @@ import { NotfoundComponent } from './components/notfound/notfound.component';
 const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'register',component:RegisterComponent},
+  // lazy loading use download necessary files when browser request to it
   {path:'',loadChildren:()=>import('./components/user/user.module').then(m => m.UserModule)},
+  {path:'admin',loadChildren:()=>import('./components/admin/admin.module').then(m => m.AdminModule)},
   {path: '**', component: NotfoundComponent},
 ];
 
