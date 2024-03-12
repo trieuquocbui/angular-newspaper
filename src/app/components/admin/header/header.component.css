@@ -5,16 +5,27 @@
 }
 
 .header_nav{
-    display: flex;
-    height: 100%;
-}
-
-.header_item,
-.header_item--right{
     height: 100%;
     display: flex;
     align-items: center;
+    
 }
+
+.header_nav_link{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0px 10px;
+    font-size: 18px;
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.header_nav_link.active{
+    color: var(--white-color);
+    background: linear-gradient(180deg, var(--one-primary-color), var(--two-primary-color));
+}
+
 
 .header_imgOfUser:hover .header_customOfUser{
     display: block;
@@ -52,7 +63,6 @@
     position: absolute;
     right: 0px;
     bottom: -78px;
-    background-color: #ffffff;
     width: 140px;
 }
 
