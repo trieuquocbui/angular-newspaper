@@ -1,0 +1,83 @@
+.header{
+    font-size: 16px;
+    height: 60px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.header_nav{
+    display: flex;
+    height: 100%;
+}
+
+.header_item,
+.header_item--right{
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.header_imgOfUser:hover .header_customOfUser{
+    display: block;
+}
+
+
+.header_nav--right{
+    display: flex;
+    height: 100%;
+    align-items: center;
+    flex-direction: row-reverse;
+}
+
+.header_item_link--right{
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    
+}
+
+
+.header_imgOfUser{
+    position: relative;
+}
+
+.header_imgOfUser img{
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.header_customOfUser{
+    display: none;
+    position: absolute;
+    right: 0px;
+    bottom: -78px;
+    background-color: #ffffff;
+    width: 140px;
+}
+
+.header_customOfUser::before{
+    position: absolute;
+    content: "";
+    border-width: 10px 10px;
+    border-style: solid;
+    border-color: transparent transparent var(--one-primary-color) transparent;
+    right: 10px;
+    top: -19px;
+}
+
+
+.header_customOfUser_item_link{
+    text-decoration: none;
+    background-color: var(--one-primary-color);
+    color: var(--white-color);
+    display: block;
+    padding: 10px;
+
+}   
+
+.header_customOfUser_item_link:hover{
+    background-color: var(--hover-color);
+}
+
+

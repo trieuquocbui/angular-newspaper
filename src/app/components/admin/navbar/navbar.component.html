@@ -1,0 +1,22 @@
+<div class="navbar">
+  <div class="navbar_logo">
+    <a class="navbar_logo_link">
+        <img [src]="'assets/images/AdminLTELogo.png'" alt="logo" class="navbar_logo_img">
+        <span class="navbar_logo_name">Phần mềm quản lí</span>
+    </a>
+  </div>
+  <div class="navbar_body">
+    <ul class="navbar_body_menu">
+      <li class="navbar_body_item" >
+        <a [routerLink]="'account'" class="navbar_body_item_link" routerLinkActive="active">
+          Quản lí người dùng
+        </a>
+      </li>
+      <li class="navbar_body_item" >
+        <a [routerLink]="'newspaper'" class="navbar_body_item_link" routerLinkActive="active">
+          Quản lí bài báo
+        </a>
+    </li>
+    </ul>
+  </div>
+</div>
