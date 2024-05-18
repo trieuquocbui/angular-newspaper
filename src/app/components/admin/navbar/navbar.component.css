@@ -1,7 +1,5 @@
 .navbar{
-    height: 100vh;
-    background: linear-gradient(180deg, var(--one-primary-color), var(--two-primary-color));
-    padding: 10px 10px;
+    
 }
 
 .navbar_logo{

@@ -1,0 +1,40 @@
+
+.paragraph_image{
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.paragraph_image img{
+    width: 600px;
+    aspect-ratio: 11 / 7;
+    position: relative;
+}
+  
+  
+.image-upload {
+    padding: 0;
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 1;
+    width: 600px;
+    height: 100%;
+}
+
+.delete-image{
+    width: 120px;
+    position: absolute;
+    right: 0;
+    z-index: 10;
+}
+
+.control_btns{
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.control_paragraph{
+    display: flex;
+    justify-content: end;
+}

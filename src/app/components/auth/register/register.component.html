@@ -1,20 +1,47 @@
 <div class="login-register">
-  <form class="form">
+  <form class="form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <div class="form_controller">
-      <i class="fa-solid fa-user form_controller_icon"></i>
-      <input class="form_controller_input" placeholder="Nhập username hoặc email" type="text">
+      <div class="form_controller_container">
+        <i class="fa-solid fa-user form_controller_icon"></i>
+        <input (click)="cancleError()" formControlName="fullName" class="form_controller_input l-12" placeholder="Nhập họ và tên" type="text">
+      </div>
+    <div class="form_controller_error">
+      <span *ngIf="f['fullName'].errors && f['fullName'].errors['required']  && submited ">Vui lòng nhập họ và tên</span>
+    </div>
+  </div>
+    <div class="form_controller">
+        <div class="form_controller_container">
+          <i class="fa-solid fa-user form_controller_icon"></i>
+          <input (click)="cancleError()" formControlName="username" class="form_controller_input l-12" placeholder="Nhập username hoặc email" type="text">
+        </div>
+        <div class="form_controller_error">
+          <span *ngIf="messageError != undefined && submited">{{messageError}}</span>
+          <span *ngIf="f['username'].errors && f['username'].errors['required'] && submited ">Vui lòng nhập username hoặc email</span>
+        </div>
     </div>
     <div class="form_controller">
-      <i  class="fa-solid fa-lock form_controller_icon"></i>
-      <input class="form_controller_input" placeholder="Nhập mật khẩu" type="password">
+      <div class="form_controller_container">
+        <i  class="fa-solid fa-lock form_controller_icon"></i>
+        <input (click)="cancleError()" formControlName="password" class="form_controller_input l-12" placeholder="Nhập mật khẩu" type="password">
+      </div>
+      <div class="form_controller_error">
+        <span *ngIf="f['password'].errors && f['password'].errors['minlength'] && submited">Mật khẩu ít nhất 6 kí tự</span>
+        <span *ngIf="f['password'].errors && f['password'].errors['required'] && submited ">Vui lòng nhập mật khẩu</span>
+      </div>
     </div>
     <div class="form_controller">
-      <i  class="fa-solid fa-lock form_controller_icon"></i>
-      <input class="form_controller_input" placeholder="Xác nhận mật khẩu" type="password">
+      <div class="form_controller_container">
+        <i  class="fa-solid fa-lock form_controller_icon"></i>
+        <input (click)="cancleError()" formControlName="confirmPassword" class="form_controller_input l-12" placeholder="Xác nhận mật khẩu" type="password">
+      </div>
+      <div class="form_controller_error">
+        <span *ngIf="f['confirmPassword'].errors && f['confirmPassword'].errors['matching'] && submited ">Xác nhận mật khẩu không chính xác</span>
+        <span *ngIf="f['confirmPassword'].errors && f['confirmPassword'].errors['required'] && submited ">Vui lòng xác nhận mật khẩu</span>
+      </div>
     </div>
     
-    <div class="form_controller">
-      <button class="btn_enter">Đăng kí</button>
+    <div class="form_controller mb-16">
+      <button class="btn">Đăng kí</button>
     </div>
     <div class="register_login_page">
       <a class="register_login_link" routerLink="/login">Đăng nhập tài khoản</a>
@@ -32,3 +59,22 @@
     </div>
   </form>
 </div>
+
+
+<ng-container *ngIf="message != undefined" 
+[appModal]="'notification'" 
+[positionClose]="1"
+[widthSize]="'20%'"
+[openModal]="true" >
+
+  <ng-template #notification>
+    {{message}}
+  </ng-template>
+
+  <app-modal [modelId]="'notification'" [template]="notification" [showBtn]="false"></app-modal>
+</ng-container>
+
+
+
+ 
+

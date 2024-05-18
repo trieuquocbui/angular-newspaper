@@ -1,4 +1,6 @@
 .footer{
+    bottom: 0;
+    width: -webkit-fill-available;
     margin-top: 60px;
     padding: 0 100px;
     z-index: 10;

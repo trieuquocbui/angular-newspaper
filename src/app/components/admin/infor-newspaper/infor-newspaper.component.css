@@ -1,0 +1,10 @@
+.content_main{
+    margin: 30px 100px !important;
+    border-radius: 10px !important;
+    border: 1px solid var(--border-color);
+    background-color: var(--white-color) !important;
+}
+
+.box_newspaper{
+    padding: 20px;
+}

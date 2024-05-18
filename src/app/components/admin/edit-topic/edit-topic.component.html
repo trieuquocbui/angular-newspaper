@@ -1,0 +1,51 @@
+<div class="content l-12">
+  <ul class="l-12 breadcrumb" style="padding: 10px">
+    <li class="breadcrumb-item">
+      <a [routerLink]="'/management/topic'">Danh sách chủ đề</a>
+    </li>
+    <li class="breadcrumb-item"><a>Chỉnh sữa chủ đề</a></li>
+  </ul>
+  <div class="content__heading">
+    <h2>Mẫu chỉnh sữa chủ đề</h2>
+  </div>
+  <div class="content__main">
+          <form [formGroup]="topicForm" (ngSubmit)="onSubmit()" class="row-offset-8-wrap form form-area" method="post">
+            <div class="form_controller col-offset-8 l-6">
+              <div class="form_controller_container">
+                <label class="form_controller_lable l-12">Mã chủ đề</label>
+                <input (click)="cancleError()" formControlName="id" class="form_controller_input l-12" placeholder="Mã chủ đề" type="text">
+              </div>
+              <div class="form_controller_error">
+        
+              </div>
+            </div>
+        
+            <div class="form_controller col-offset-8 l-6">
+              <div class="form_controller_container">
+                <label class="form_controller_lable l-12">Tên chủ đề</label>
+                <input (click)="cancleError()" formControlName="name"  class="form_controller_input l-12" placeholder="Nhập tên chủ đề" type="text">
+              </div>
+              <div class="form_controller_error">
+                <span *ngIf="(messageErrorName != undefined || messageErrorName != '') && submited ">{{messageErrorName}}</span>
+                <span *ngIf="f['name'].errors && f['name'].errors['required']  && submited ">Vui lòng nhập họ và tên</span>
+              </div>
+            </div>
+            <div class="form_controller col-offset-8 l-12">
+              <button class="btn">Xác nhập</button>
+            </div>
+          </form>
+  </div>
+</div>
+
+<ng-container *ngIf="messageSucces != undefined" 
+[appModal]="'notification'" 
+[positionClose]="1"
+[widthSize]="'20%'"
+[openModal]="true" >
+
+  <ng-template #notification>
+    {{messageSucces}}
+  </ng-template>
+
+  <app-modal [modelId]="'notification'" [template]="notification" [showBtn]="false"></app-modal>
+</ng-container>

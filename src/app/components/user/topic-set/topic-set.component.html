@@ -1,14 +1,8 @@
 <div class="topic_set">
   <span class="topic_set_text">Đọc báo theo chủ đề</span>
   <div class="row-offset-8-4 topic_set_container">
-    <div class="col-offset-8-4 topic_set_item">
-      <a href=""> Khoa học và công nghệ </a>
-    </div>
-    <div class="col-offset-8-4 topic_set_item">
-      <a href=""> Du lịch </a>
-    </div>
-    <div class="col-offset-8-4 topic_set_item">
-      <a href=""> Phong cách sống </a>
+    <div class="col-offset-8-4 topic_set_item" *ngFor="let item of allTopic">
+      <a [ngClass]="{'active': name == item.name}" (click)="selectTopic(item.name)"> {{item.name}} </a>
     </div>
   </div>
 </div>

@@ -1,80 +1,17 @@
 <div appSliderDirective class="slider mt-30">
   <div class="slider_list row-offset-8">
-    <a href="" class="slider_list_item col-offset-8 l-2-o-4 ">
+    <a [routerLink]="'/newspaper/' + newspaper.id" *ngFor="let newspaper of newspaperList; let i = index" href="" class="slider_list_item col-offset-8 l-2-o-4 ">
       <div class="box-item ">
-        <img class="image" src="assets\images\34ce4add353b05f5e19f0ba7b75b86f0.jpg">
-        <div class="origin">CNN</div>
+        <img class="image" [src]="imageList[i]">
+        <div class="topic">{{newspaper.topic}}</div>
         <div class="title">
-          <span>Cắt xong cái clip pha R của Tahm Kench luôn rồi, thôi thì khen tạm pha này trong lúc chờ vậy, chứ tôi thì đã chửi thề nãy giờ rồi
+          <span>
+            <ng-container *ngFor="let paragraph of newspaper.paragraphs">
+              {{paragraph.content}}
+            </ng-container>
           </span>
         </div>
-        <div class="time-up">2024-03-07 07:33:44</div>
-      </div>
-    </a>
-    <a href="" class="slider_list_item col-offset-8 l-2-o-4">
-      <div class="box-item ">
-        <img class="image" src="assets\images\34ce4add353b05f5e19f0ba7b75b86f0.jpg">
-        <div class="origin">CNN</div>
-        <div class="title">
-          <span>Cắt xong cái clip pha R của Tahm Kench luôn rồi, thôi thì khen tạm pha này trong lúc chờ vậy, chứ tôi thì đã chửi thề nãy giờ rồi
-          </span>
-        </div>
-        <div class="time-up">2024-03-07 07:33:44</div>
-      </div>
-    </a>
-    <a href="" class="slider_list_item col-offset-8 l-2-o-4 ">
-      <div class="box-item ">
-        <img class="image" src="assets\images\34ce4add353b05f5e19f0ba7b75b86f0.jpg">
-        <div class="origin">CNN</div>
-        <div class="title">
-          <span>Cắt xong cái clip pha R của Tahm Kench luôn rồi, thôi thì khen tạm pha này trong lúc chờ vậy, chứ tôi thì đã chửi thề nãy giờ rồi
-          </span>
-        </div>
-        <div class="time-up">2024-03-07 07:33:44</div>
-      </div>
-    </a>
-    <a href="" class="slider_list_item col-offset-8 l-2-o-4">
-      <div class="box-item ">
-        <img class="image" src="assets\images\34ce4add353b05f5e19f0ba7b75b86f0.jpg">
-        <div class="origin">CNN</div>
-        <div class="title">
-          <span>Cắt xong cái clip pha R của Tahm Kench luôn rồi, thôi thì khen tạm pha này trong lúc chờ vậy, chứ tôi thì đã chửi thề nãy giờ rồi
-          </span>
-        </div>
-        <div class="time-up">2024-03-07 07:33:44</div>
-      </div>
-    </a>
-    <a href="" class="slider_list_item col-offset-8 l-2-o-4 ">
-      <div class="box-item ">
-        <img class="image" src="assets\images\34ce4add353b05f5e19f0ba7b75b86f0.jpg">
-        <div class="origin">CNN</div>
-        <div class="title">
-          <span>Cắt xong cái clip pha R của Tahm Kench luôn rồi, thôi thì khen tạm pha này trong lúc chờ vậy, chứ tôi thì đã chửi thề nãy giờ rồi
-          </span>
-        </div>
-        <div class="time-up">2024-03-07 07:33:44</div>
-      </div>
-    </a>
-    <a href="" class="slider_list_item col-offset-8 l-2-o-4">
-      <div class="box-item ">
-        <img class="image" src="assets\images\34ce4add353b05f5e19f0ba7b75b86f0.jpg">
-        <div class="origin">CNN</div>
-        <div class="title">
-          <span>Cắt xong cái clip pha R của Tahm Kench luôn rồi, thôi thì khen tạm pha này trong lúc chờ vậy, chứ tôi thì đã chửi thề nãy giờ rồi
-          </span>
-        </div>
-        <div class="time-up">2024-03-07 07:33:44</div>
-      </div>
-    </a>
-    <a href="" class="slider_list_item col-offset-8 l-2-o-4">
-      <div class="box-item ">
-        <img class="image" src="assets\images\34ce4add353b05f5e19f0ba7b75b86f0.jpg">
-        <div class="origin">CNN</div>
-        <div class="title">
-          <span>Cắt xong cái clip pha R của Tahm Kench luôn rồi, thôi thì khen tạm pha này trong lúc chờ vậy, chứ tôi thì đã chửi thề nãy giờ rồi
-          </span>
-        </div>
-        <div class="time-up">2024-03-07 07:33:44</div>
+        <div class="time-up">{{newspaper.datetime! | dateFormat}}</div>
       </div>
     </a>
   </div>

@@ -1,0 +1,52 @@
+<div class="content l-12">
+  <ul class="l-12 breadcrumb" style="padding: 10px">
+    <li class="breadcrumb-item">
+      <a [routerLink]="'/management/origin'">Danh sách nguồn</a>
+    </li>
+    <li class="breadcrumb-item"><a>Tạo nguồn báo</a></li>
+  </ul>
+  <div class="content__heading">
+    <h2>Mẫu tạo nguồn</h2>
+  </div>
+  <div class="content__main">
+          <form [formGroup]="originForm" (ngSubmit)="onSubmit()" class="row-offset-8-wrap form form-area" method="post">
+            <div class="form_controller col-offset-8 l-6">
+              <div class="form_controller_container">
+                <label class="form_controller_lable l-12">Mã nguồn</label>
+                <input (click)="cancleError()" formControlName="id" class="form_controller_input l-12" placeholder="Mã nguồn" type="text">
+              </div>
+              <div class="form_controller_error">
+                <span *ngIf="messageErrorId != undefined && submited ">{{messageErrorId}}</span>
+                <span *ngIf="f['id'].errors && f['id'].errors['required']  && submited ">Vui lòng nhập mã</span>
+              </div>
+            </div>
+        
+            <div class="form_controller col-offset-8 l-6">
+              <div class="form_controller_container">
+                <label class="form_controller_lable l-12">Tên nguồn</label>
+                <input (click)="cancleError()" formControlName="name"  class="form_controller_input l-12" placeholder="Nhập tên nguồn" type="text">
+              </div>
+              <div class="form_controller_error">
+                <span *ngIf="(messageErrorName != undefined || messageErrorName != '') && submited ">{{messageErrorName}}</span>
+                <span *ngIf="f['name'].errors && f['name'].errors['required']  && submited ">Vui lòng nhập tên</span>
+              </div>
+            </div>
+            <div class="form_controller col-offset-8 l-12">
+              <button class="btn">Xác nhập</button>
+            </div>
+          </form>
+  </div>
+</div>
+
+<ng-container *ngIf="messageSucces != ''" 
+[appModal]="'notification'" 
+[positionClose]="1"
+[widthSize]="'20%'"
+[openModal]="true" >
+
+  <ng-template #notification>
+    {{messageSucces}}
+  </ng-template>
+
+  <app-modal [modelId]="'notification'" [template]="notification" [showBtn]="false"></app-modal>
+</ng-container>

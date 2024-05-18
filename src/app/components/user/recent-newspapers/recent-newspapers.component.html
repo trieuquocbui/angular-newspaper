@@ -1,0 +1,25 @@
+<div class="box_recent_news">
+  <p>Tìm đọc tin tức theo ngày <input placeholder="Chọn ngày tháng năm" (input)="select($event)" type="date" style="width: 150px;" class="ml-8 custome_form_controller_input"></p>
+  <div class="recent_news_set row ">
+    <a class="col l-12 recent_news_set_item" [routerLink]="'/newspaper/' + newspaper.id" *ngFor="let newspaper of newspaperList;let i=index; trackBy: trackByFn ">
+      <div class="l-3 p-r-10">
+        <img class=" news_image" [src]="imageList[i]" alt="">
+      </div>
+      <div class="l-9 news_article_info">
+        <div class="news_title">{{newspaper.name}}</div>
+        <div class="news_centent"><span>
+          <ng-container *ngFor="let paragraph of newspaper.paragraphs">
+            {{paragraph.content}}
+          </ng-container>
+        </span></div>
+        <div class="news_time-up">
+          <span>Nguồn: {{newspaper.origin}}</span>
+          <span>{{newspaper.datetime! | dateFormat}}</span>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div class="show">
+    <button *ngIf="show" class="show-btn" (click)="showNewspaper()"><span>Xem thêm</span><main></main></button>
+  </div>
+</div>

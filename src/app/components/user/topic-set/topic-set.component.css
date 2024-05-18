@@ -24,3 +24,9 @@
     text-decoration: none;
     font-size: 12px;
 }
+
+.topic_set_item a.active{
+    color: var(--white-color);
+    border: none;
+    background-color: var(--active-color);
+}

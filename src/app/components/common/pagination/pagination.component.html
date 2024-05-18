@@ -1,0 +1,11 @@
+<div class="content_main_pagination">
+     <div class="pagination">
+      <button class="pagination_item" [ngClass]="{'unactive': currentPageNumber == 1}" [disabled]="currentPageNumber == 1" (click)="goToPage.emit(1)"><i class="fa-solid fa-angles-left"></i></button>
+      <button class="pagination_item" [ngClass]="{'unactive': currentPageNumber == 1}" [disabled]="currentPageNumber == 1" (click)="goToPage.emit(currentPageNumber - 1)"><i class="fa-solid fa-angle-left"></i></button>
+      <ng-container *ngFor="let page of getPaginationGenerator()">
+        <button class="pagination_item" (click)="goToPage.emit(page)" [ngClass]="{'active': page == currentPageNumber}">{{page}}</button>
+      </ng-container>
+      <button class="pagination_item" [ngClass]="{'unactive': currentPageNumber == totalPageNumber}" [disabled]="currentPageNumber == totalPageNumber" (click)="goToPage.emit(currentPageNumber + 1)"><i class="fa-solid fa-angle-right"></i></button>
+      <button class="pagination_item" [ngClass]="{'unactive': currentPageNumber == totalPageNumber}" [disabled]="currentPageNumber == totalPageNumber" (click)="goToPage.emit(totalPageNumber)"><i class="fa-solid fa-angles-right"></i></button>
+     </div>
+</div>

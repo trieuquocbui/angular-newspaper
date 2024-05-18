@@ -1,0 +1,38 @@
+<div class="grid wide">
+  <div class="row-offset-20">
+    <div class="col-offset-20 l-9 mt-30">
+      <h1 class="desc">Tin tức mới nhất trong ngày, cập nhật liên tục 24h. Từ nguồn báo chính thống như CNN, BBC, VOA, Inside Science,...</h1>
+      <div class="box">
+        <div *ngIf="notificationList.length == 0">không tìm thấy thông báo nào</div>
+        <div class="box_notification" *ngIf="notificationList.length > 0">
+          <div class="notification row">
+            <a class="col l-12 notification_item" [routerLink]="'/newspaper/' + notification.newspaperId" *ngFor="let notification of notificationList; let i = index">
+            <div class="notification_image_box p-r-10">
+              <img class="notification_image" [src]="pathImageFile + notification.image" alt="">
+            </div>
+          <div class="notification_info">
+        <div class="notification_title">{{notification.content}}</div>
+        <div class="notification_time-up">
+          <span>{{notification.dateTime | dateFormat}}</span>
+        </div>
+      </div>
+            </a>
+          </div>
+        <div class="show">
+          <button *ngIf="show" class="show-btn" (click)="showNewspaper()"><span>Xem thêm</span><main></main></button>
+        </div>
+</div>
+
+        
+        
+      
+
+
+
+      </div>
+    </div>
+    <div class="col-offset-20 l-3 mt-30">
+      <app-topic-set></app-topic-set>
+    </div>
+  </div>
+</div>

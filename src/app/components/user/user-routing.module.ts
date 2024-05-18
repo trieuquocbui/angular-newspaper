@@ -1,16 +1,18 @@
 import { RouterModule, Routes } from "@angular/router";
 import { NgModule } from "@angular/core";
 import { UserComponent } from "./user.component";
-import { HotNewsComponent } from "./hot-news/hot-news.component";
-import { NewsComponent } from "./news/news.component";
 import { NewspaperComponent } from "./newspaper/newspaper.component";
+import { HomeComponent } from "./home/home.component";
+import { ProfileComponent } from "../common/profile/profile.component";
+import { NotificationListComponent } from "./notification-list/notification-list.component";
 
 const routes: Routes = [
   {path:'',component:UserComponent,children:[
     {path: '', redirectTo: '/home', pathMatch: 'full'},
-    {path:'home',component:NewsComponent},
-    {path:'hot-news',component:HotNewsComponent},
-    {path:'newspaper/:newpaperId',component:NewspaperComponent}
+    {path:'home',component:HomeComponent},
+    {path:'newspaper/:newspaperId',component:NewspaperComponent},
+    {path:'profile/:username',component:ProfileComponent},
+    {path:'notification',component:NotificationListComponent}
   ]}
 ];
 

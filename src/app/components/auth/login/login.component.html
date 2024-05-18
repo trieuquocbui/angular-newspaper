@@ -1,19 +1,33 @@
 <div class="login-register">
-  <form class="form">
+  <form class="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
     <div class="form_controller">
-      <i class="fa-solid fa-user form_controller_icon"></i>
-      <input class="form_controller_input" placeholder="Nhập username hoặc email" type="text">
+      <div class="form_controller_container">
+        <i class="fa-solid fa-user form_controller_icon"></i>
+        <input (click)="cancleError()" formControlName="username" class="form_controller_input l-12" placeholder="Nhập username hoặc email" type="text">
+      </div>
+      <div class="form_controller_error" >
+        <span *ngIf="f['username'].errors && submited ">Vui lòng nhập tài khoản</span>
+        <span *ngIf="messageUsernameError != undefined && submited ">{{messageUsernameError}}</span>
+      </div>
     </div>
     <div class="form_controller">
-      <i  class="fa-solid fa-lock form_controller_icon"></i>
-      <input class="form_controller_input" placeholder="Nhập mật khẩu" type="password">
+      <div class="form_controller_container">
+        <i class="fa-solid fa-lock form_controller_icon"></i>
+        <input (click)="cancleError()" formControlName="password" class="form_controller_input l-12" placeholder="Nhập mật khẩu" type="password">
+      </div>
+      <div class="form_controller_error">
+        <span *ngIf="f['password'].errors && submited ">Vui lòng nhập mật khẩu</span>
+        <span *ngIf="messagePasswordError != undefined && submited ">{{messagePasswordError}}</span>
+      </div>
     </div>
-    <div class="form_controller remember">
+    <div class="form_controller remember mb-16">
       <label class="form_controller_lable" for="">Lưu tài khoản</label>
       <input class="form_controller_input" type="checkbox">
     </div>
-    <div class="form_controller">
-      <button class="btn_enter">Đăng nhập</button>
+    <div class="form_controller mb-16">
+      <button class="btn undisable">
+        Đăng nhập
+      </button>
     </div>
     <div class="register_login_page">
       <a routerLink="/register" class="register_login_link" href="">Đăng kí tài khoản mới</a>

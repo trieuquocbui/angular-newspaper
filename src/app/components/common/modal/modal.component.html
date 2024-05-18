@@ -1,0 +1,32 @@
+<div id="{{ modelId }}" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    
+    <div class="container-modal">
+      <ng-container *ngIf="title == undefined">
+        <h1 class="title-modal">Thông báo</h1>
+      </ng-container>
+      <ng-container *ngIf="title != undefined">
+        <h1 class="title-modal">{{title}}</h1>
+      </ng-container>
+      <p class="message">
+        <!-- *ngTemplateOutlet use render a template init by ng-template-->
+        <ng-container
+        *ngTemplateOutlet="template"
+      ></ng-container>
+      </p>
+    
+      <div class="clearfix" *ngIf="showBtn">
+        <ng-container *ngIf="submitName == undefined; else other">
+          <button (click)="submitConfirm()" class="confirmbtn">Xác nhận</button>
+        </ng-container>
+        <ng-template #other>
+          <button (click)="submitConfirm()"  class="confirmbtn">{{submitName}}</button>
+        </ng-template>
+        <button (click)="submitCancel()" class="cancelbtn">Huỷ bỏ</button>
+      </div>
+    </div>
+    
+  </div>
+</div>

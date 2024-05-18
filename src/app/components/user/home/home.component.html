@@ -1,0 +1,21 @@
+<div class="grid wide">
+    <div class="row-offset-20">
+      <div class="col-offset-20 l-9 mt-30">
+        <app-tool-bar (search)="search($event)" (topic)="selectedTopic($event)" [topic]="selectedTopicName" (origin)="selectedOrigin($event)"></app-tool-bar>
+        <h1 class="desc-home">Tin tức mới nhất trong ngày, cập nhật liên tục 24h. Từ nguồn báo chính thống như CNN, BBC, VOA, Inside Science,...</h1>
+        <div class="box_news">
+          <div *ngIf="pageHome; then home else list"></div>
+          <ng-template #home>
+            <app-new-newspapers></app-new-newspapers>
+            <app-recent-newspapers></app-recent-newspapers>
+          </ng-template>
+          <ng-template #list>
+            <app-newspaper-list [search]="keySearch"  [topicName]="selectedTopicName" [originName]="selectedOriginName"></app-newspaper-list>
+          </ng-template>
+        </div>
+      </div>
+      <div class="col-offset-20 l-3 mt-30">
+        <app-topic-set [topic]="selectedTopicName" (topic)="selectedTopic($event)"></app-topic-set>
+      </div>
+    </div>
+  </div>

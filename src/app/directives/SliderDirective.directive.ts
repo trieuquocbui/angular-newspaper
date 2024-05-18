@@ -43,7 +43,7 @@ export class SliderDirective {
 
   @HostListener('mousemove', ['$event'])
   onMouseMove(event: MouseEvent) {
-    if(this.isDraging){
+    if(this.isDraging && this.items.length > 5){
       let move = this.xPoint - event.clientX - this.valueTranslateX;
       this.slider_list.style.transform = `translateX(${-move}px)`;
       this.slider_list.style.transition = `transform 200ms ease 0s`;

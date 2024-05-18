@@ -1,0 +1,9 @@
+export enum CodeEnum{
+    SUCCESS = "1000",
+    FAIL = "2000",
+    ERROR_PASSWORD = "7000",
+    ERR0R_ENTITY_NOTFOUND = "3000",
+    ERROR_ID_EXIST = "4000",
+    ERROR_NAME_EXIST = "5000",
+    ERROR_ENTITY_CANNOT_EDIT = "6000",
+}

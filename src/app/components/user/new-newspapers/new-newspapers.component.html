@@ -1,0 +1,13 @@
+<div class="box_all_news" *ngIf="firstNewNewspaper != undefined">
+    <a class="first_news" >
+      <img class="image" [src]="pathImageFile" [routerLink]="'/newspaper/' + firstNewNewspaper.id" alt="">
+      <div class="article-info">
+        <p class="title">{{firstNewNewspaper.name}}</p>
+        <div class="topic">{{firstNewNewspaper.topic}}</div>
+        <span class="time-up">{{firstNewNewspaper.datetime! | dateFormat}}</span>
+      </div>
+    </a>
+    <div>
+      <app-slider [list]="allNewNewspaper"></app-slider>
+    </div>
+</div>

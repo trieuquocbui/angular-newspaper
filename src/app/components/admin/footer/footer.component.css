@@ -1,4 +1,7 @@
 .footer{
+    position: fixed;
+    bottom: 0;
+    width: -webkit-fill-available;
     padding: 0px 20px;
     border-top: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);

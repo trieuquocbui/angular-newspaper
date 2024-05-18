@@ -1,0 +1,128 @@
+<div class="content l-12">
+  <ul class="l-12 breadcrumb" style="padding: 10px">
+    <li class="breadcrumb-item">
+      <a [routerLink]="'/management/newspaper'">Danh sách bài báo</a>
+    </li>
+    <li class="breadcrumb-item"><a>Tạo bài báo</a></li>
+  </ul>
+  <div class="content__heading">
+    <h2>Mẫu tạo bài báo</h2>
+  </div>
+  <div class="content__main">
+          <form [formGroup]="newspaperForm" class="row-offset-8-wrap form form-area" method="post">        
+            <div class="form_controller col-offset-8 l-12">
+              <div class="form_controller_container">
+                <label class="form_controller_lable l-12">Tên bài báo</label>
+                <textarea (click)="cancleError()" formControlName="name" placeholder="Nhập tên bài báo" rows="3" class="form_controller_input l-12"></textarea>
+              </div>
+              <div class="form_controller_error">
+                <span *ngIf="(messageErrorName != undefined || messageErrorName != '') && submited ">{{messageErrorName}}</span>
+                <span *ngIf="f['name'].errors && f['name'].errors['required']  && submited ">Nhập tên bài báo</span>
+              </div>
+            </div>
+            <div class="form_controller col-offset-8 l-5">
+              <div class="form_controller_container">
+                <label class="form_controller_lable l-12">Lựa chọn chủ đề</label>
+                <select (click)="cancleError()" formControlName="topic" class="form_controller_input l-12">
+                  <option [ngValue]="null" disabled>Lựa chọn chủ đề</option>
+                  <option *ngFor="let topic of allTopic" [ngValue]="topic.name">
+                    {{ topic.name }}
+                  </option>      
+                </select>
+              </div>
+              <div class="form_controller_error">
+                <span *ngIf="f['topic'].errors && f['topic'].errors['required']  && submited ">Vui lòng lựa chọn chủ đề</span>
+              </div>
+            </div>
+            <div class="form_controller col-offset-8 l-5">
+              <div class="form_controller_container">
+                <label class="form_controller_lable l-12">Lựa chọn nguồn</label>
+                <select (click)="cancleError()" formControlName="origin" class="form_controller_input l-12">
+                  <option [ngValue]="null" disabled>Lựa chọn nguồn</option>
+                  <option *ngFor="let origin of allOrigin" [ngValue]="origin.name">
+                    {{ origin.name }}
+                  </option>      
+                </select>
+              </div>
+              <div class="form_controller_error">
+                <span *ngIf="f['topic'].errors && f['topic'].errors['required']  && submited ">Vui lòng lựa chủ đề</span>
+              </div>
+            </div>
+            <div class="form_controller col-offset-8 l-12" formArrayName="paragraphs">
+              <ng-container *ngFor="let paragraph of paragraphs.controls;let i = index" [formGroupName]="i">
+                
+                <div class="form_controller_container mb-8" *ngIf="controlsExistInParagraph(i, 'content')">
+                <ng-container *ngIf="paragraph.get('thumbnail') != undefined">
+                    <div class="container-image l-12 mb-8">
+                      <div class="paragraph_image">
+                        <img [src]="imageList[i] || pathImageFile" alt="">
+                        <input (click)="cancleError()" type="file" class="image-upload" title="" (change)="onImageChange(i,$event)">
+                      </div>
+                      <div class="form_controller_error">
+                        <span *ngIf="paragraph.get('thumbnail')!.hasError('required') && submited">Vui lòng tải ảnh lên!</span>
+                      </div>
+                    </div>
+                    <textarea (click)="cancleError()" formControlName="figCaption" placeholder="Nhập caption" rows="1" class="form_controller_input l-12"></textarea>
+                    <div class="form_controller_error">
+                      <span *ngIf="paragraph.get('figCaption')!.hasError('required') && submited">Nhập caption</span>
+                    </div>
+                </ng-container>
+                 
+                </div>
+                  <div class="form_controller_container">
+                    <textarea (click)="cancleError()" formControlName="content" placeholder="Nhập nội dung" rows="10" class="form_controller_input l-12"></textarea>
+                  </div>
+                  <div class="form_controller_error">
+                    <span *ngIf="paragraph.get('content')?.hasError('required') && submited">Nhập nội dung</span>
+                  </div>
+              </ng-container>
+            </div>
+            <div class="form_controller col-offset-8 l-12 control_btns">
+              <div class=" l-2 ">
+                <button class="btn" (click)="createParagraph()">Thêm đoạn</button>
+              </div>
+              <div class="l-5 control_paragraph" [formGroup]="handleParagrapForm">
+                <div class=" l-3 select_control_btn">
+                  <input (click)="cancleError()" formControlName="index" class="form_controller_input" type="number" [min]="1" [max]="paragraphs.length">
+                  <div class="form_controller_error">
+                    <span *ngIf="this.handleParagrapForm.controls['index'].errors && this.handleParagrapForm.controls['index'].errors['required']  && submitedHandleParagraph">Chọn đoạn</span>
+                  </div>
+                </div>
+                <div class=" l-3 ">
+                  <select (click)="cancleError()" formControlName="handleId" class="form_controller_input l-12">
+                    <option disabled [defaultSelected]="true" >Lựa chọn</option>
+                    <option value="addImage">Thêm ảnh</option>
+                    <option value="removeImage">Xoá ảnh</option>
+                    <option value="removeParagraph">Xoá đoạn</option>
+                  </select>
+                  <div class="form_controller_error">
+                    <span *ngIf="this.handleParagrapForm.controls['handleId'].errors && this.handleParagrapForm.controls['handleId'].errors['required']  && submitedHandleParagraph">Chọn thao tác</span>
+                  </div>
+                </div>
+                <div class="l-3 ">
+                  <button class="btn" (click)="onSubmitHandleParagrapForm()">Thực hiện</button>
+                </div>
+              </div>
+              
+            </div>
+            <div class="form_controller col-offset-8 l-12" style="flex-direction: row;justify-content: end;">
+              <div class="l-12">
+                <button (click)="onSubmit()" class="btn">Xác nhận chỉnh sữa</button>
+              </div>
+            </div>
+          </form>
+  </div>
+</div>
+
+<ng-container *ngIf="messageSucces != ''" 
+[appModal]="'notification'" 
+[positionClose]="1"
+[widthSize]="'20%'"
+[openModal]="true" >
+
+  <ng-template #notification>
+    {{messageSucces}}
+  </ng-template>
+
+  <app-modal [modelId]="'notification'" [template]="notification" [showBtn]="false"></app-modal>
+</ng-container>

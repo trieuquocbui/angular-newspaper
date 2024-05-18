@@ -67,7 +67,7 @@
     float: right;
 }
 
-.box_newspaper{
+/* .box_newspaper{
     padding: 20px;
     border-radius: 10px;
     border: 1px solid var(--border-color);
@@ -85,9 +85,6 @@
 }
 .newspaper_time-up{
     margin-bottom: 20px;
-}
-.newspaper_conent{
-
 }
 
 .paragraph{
@@ -133,4 +130,4 @@
 .newspaper_footer_author{
     font-size: 18px;
     font-weight: 600;
-}
+} */

@@ -1,0 +1,14 @@
+<div appDropdown class="user_box">
+  <div class="user_box_container">
+    <img class="user_box_img" [src]="thumbnail" alt=""> 
+    <span class="user_box_name">{{user.fullName}}</span>
+  </div>
+  <div class="user_box_list">
+        <div class="user_box_item">
+            <a [routerLink]="['profile/',user.username]"   class="user_box_link">Hồ sơ</a>
+        </div>
+        <div class="user_box_item">
+            <a (click)="logout()"  class="user_box_link">Thoát</a>
+        </div>
+  </div>
+</div>

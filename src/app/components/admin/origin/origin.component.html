@@ -1,0 +1,70 @@
+<div class="content l-12">
+  <ul class="l-12 breadcrumb" style="padding: 10px">
+    <li class="breadcrumb-item">
+      <a [routerLink]="'/management/home'">Trang chủ</a>
+    </li>
+    <li class="breadcrumb-item"><a>Danh sách nguồn báo</a></li>
+  </ul>
+  <div class="content_heading">
+    <h2>Danh sách nguồn báo</h2>
+  </div>
+  <div class="content_main">
+    <div class="content_main_header">
+      <div class="content_main_add">
+        <h3 class="content_main_add_title">Thêm nguồn báo: </h3>
+        <div class="operation">
+          <button [routerLink]="'add'"  class="ml-8 btn_operation btn-add" title="Thêm nguồn báo" ><i class="fa-solid fa-plus"></i></button>
+        </div>
+      </div>
+      <form  class="custome_form" action="">
+        <div class="custome_form_controller">
+          <input id="search-form"
+            class="custome_form_controller_input"
+            type="search"
+            placeholder="Tìm kiếm..."
+            (keyup)="findOriginName($event)"
+          />
+          <button id="search-button" class="custom_submit_search">
+            <i class="fa-solid fa-magnifying-glass form_group_icon"></i>
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="content_main_list">
+      <div class="container_list">
+        <div class="container_heading_list row">
+            <div class="l-4">Mã nguồn báo</div>
+            <div class="l-4">Tên nguồn báo</div>
+            <div class="l-4">Thao tác</div>
+        </div>
+        <div class="container_content_list">
+          <div class="container_content_item row" *ngFor="let item of originList; let i = index; trackBy: trackByFn;">
+            <div class="l-4">{{item.id}}</div>
+            <div class="l-4">{{item.name}}</div>
+            <div class="l-4">
+              <div class="operation">
+                <button [routerLink]="['edit', item.id]" class="btn_operation btn-update" title="Điều chỉnh nguồn báo" ><i class="fa-solid fa-pen"></i></button>
+                <button class="btn_operation btn-remove" [appModal]="item.id" [positionClose]="i" [widthSize]="'20%'" title="Xoá nguồn báo"><i class="fa-solid fa-trash"></i></button>
+                <ng-template #notify>
+                  Bạn muốn xoá chủ đề này!
+                </ng-template>
+                <app-modal [modelId]="item.id" [template]="notify" (checked)="checked($event,item)"></app-modal>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <app-pagination (goToPage)="pageChanged($event)" [currentPageNumber]="currentPageNumber" [totalPageNumber]="totalPageNumber" [offset]="2"></app-pagination>
+    </div>
+  </div>
+  <ng-container *ngIf="message != ''" 
+[appModal]="'notification'" 
+[positionClose]="1"
+[widthSize]="'20%'"
+[openModal]="true" >
+  <ng-template #notification>
+    {{message}}
+  </ng-template>
+  <app-modal [modelId]="'notification'" [template]="notification" [showBtn]="false"></app-modal>
+</ng-container>

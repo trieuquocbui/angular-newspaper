@@ -1,0 +1,29 @@
+.content_main_pagination{
+    padding: 10px;
+}
+
+.pagination{
+    font-size: 16px;
+    display: flex;
+    justify-content: end;
+}
+
+.pagination_item{
+    border: none;
+    cursor: pointer;
+    color: var(--white-color);
+    background-color: var(--one-primary-color);
+    padding: 12px;
+}
+
+.pagination_item.normal{
+    background-color: var(--one-primary-color);
+}
+
+.pagination_item:not(.unactive):hover{
+    background-color: var(--two-primary-color);
+}
+
+.pagination_item.active{
+    background-color: var(--active-color);
+}

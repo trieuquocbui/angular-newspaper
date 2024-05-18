@@ -11,15 +11,43 @@
                     <nav class="col l-9">
                         <div class="header_left_menu" >
                             <a class="header_left_menu_item" ariaCurrentWhenActive="page" [routerLink]="'home'" routerLinkActive="active"><i class="fa-solid fa-house"></i> Trang chủ</a> 
-                            <a class="header_left_menu_item" [routerLink]="'hot-news'" routerLinkActive="active"><i class="fa-solid fa-newspaper"></i>Tin nổi bật</a>
+                            <a class="header_left_menu_item" [routerLink]="'hot-news'" routerLinkActive="active"><i class="fa-solid fa-newspaper"></i>Tin tức bằng video</a>
                         </div>
                     </nav>
                 </div>
             </div>
             <div class="col l-5 header_right">
-                <div class="header_right_menu" >
-                    <a class="header_right_menu_item" ariaCurrentWhenActive="page" [routerLink]="'login'" routerLinkActive="active">Đăng nhập</a> 
-                    <a class="header_right_menu_item" [routerLink]="'register'" routerLinkActive="active">Đăng kí</a>
+                <div class="header_right_menu">
+                    <a appDropdown (click)="onclickNotification()" class="header_left_menu_item" [ngClass]="{'active':isNotify}" routerLinkActive="active"><i class="fa-solid fa-bell"></i>Thông báo
+                        <div class="row notification_list">
+                            <a [routerLink]="'/newspaper/' + notification.newspaperId" *ngFor="let notification of notificationList" class="l-12 dropdowns-item dropdowns-notification-item">
+                                <div class="dropdowns-notification-item-img">
+                                  <img [src]="pathImageFile + notification.image" alt="">
+                                </div>
+                                <div class="row dropdowns-notification-item-info">
+                                  <div class="dropdowns-notification-item-info-body"><span>{{notification.content}}</span></div>
+                                  <div class="dropdowns-notification-item-info-datetime">Ngày: {{notification.dateTime | dateFormat}}</div>
+                                </div>
+                            </a>
+                            <div class="show">
+                                <a [routerLink]="'notification'" (click)="onActive()" class="show-btn" ><span>Xem thêm thông báo</span><main></main></a>
+                            </div>
+                        </div>
+                        <div class="row notification_empty" *ngIf="notificationList.length == 0">
+                            <div class="notification-empty-content">
+                              <span>Không có thông báo mới</span>
+                            </div>
+                        </div>
+                    </a>
+                    <div *ngIf="isLogged; then logged else notLogged"></div>
+                    <ng-template #logged>
+                        <app-user-box></app-user-box>
+                    </ng-template>
+                    <ng-template #notLogged>
+                        <a class="header_right_menu_item" ariaCurrentWhenActive="page" [routerLink]="'login'" routerLinkActive="active">Đăng nhập</a> 
+                        <a class="header_right_menu_item" [routerLink]="'register'" routerLinkActive="active">Đăng kí</a>
+                    </ng-template>
+                    
                 </div>
             </div>
         </div>

@@ -1,0 +1,47 @@
+<div class="content l-12">
+  <ul class="l-12 breadcrumb" style="padding: 10px">
+    <li class="breadcrumb-item">
+      <a [routerLink]="'/management/home'">Trang chủ</a>
+    </li>
+    <li class="breadcrumb-item"><a>Danh sách tài khoản</a></li>
+  </ul>
+  <div class="content_heading">
+    <h2>Danh sách tài khoản người dùng</h2>
+  </div>
+  <div class="content_main">
+    <div class="content_main_header">
+      <form class="custome_form" action="">
+        <div class="custome_form_controller">
+          <input id="search-form"
+            class="custome_form_controller_input"
+            type="search"
+            placeholder="Tìm kiếm..."
+            (keyup)="findUserAccount($event)"
+          />
+          <button id="search-button" class="custom_submit_search">
+            <i class="fa-solid fa-magnifying-glass form_group_icon"></i>
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="content_main_list">
+      <div class="container_list">
+        <div class="container_heading_list row">
+            <div class="l-4">Hình ảnh</div>
+            <div class="l-4">Tên tài khoản</div>
+            <div class="l-4">Họ và tên</div>
+        </div>
+        <div class="container_content_list">
+          <div class="container_content_item row" *ngFor="let item of userList; let i = index; trackBy: trackByFn;">
+            <div class="l-4">
+              <img class="image" style="border-radius: 50%;width: 38px;height: 38px;" [src]="pathImageFile+item.thumbnail" alt="">
+            </div>
+            <div class="l-4">{{item.username}}</div>
+            <div class="l-4">{{item.fullName}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <app-pagination (goToPage)="pageChanged($event)" [currentPageNumber]="currentPageNumber" [totalPageNumber]="totalPageNumber" [offset]="2"></app-pagination>
+  </div>
+</div>

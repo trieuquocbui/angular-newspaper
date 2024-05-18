@@ -1,0 +1,34 @@
+<div class="content l-12">
+  <ul class="l-12 breadcrumb" style="padding: 10px">
+    <li class="breadcrumb-item">
+      <a [routerLink]="'/management/topic'">Danh sách bài báo</a>
+    </li>
+    <li class="breadcrumb-item"><a>Chi tiết bài báo</a></li>
+    <li class="breadcrumb-item"><a>{{newspaper.name}}</a></li>
+  </ul>
+  <div class="content_main">
+    <div class="box_newspaper">
+      <div class="newspaper">
+        <div class="newspaper_title"><h1>{{newspaper.name}}</h1></div>
+        <div class="newspaper_time-up"><span>{{newspaper.datetime! | dateFormat}}</span></div>
+        <div class="newspaper_conent">
+          <div class="paragraph" *ngFor="let paragraph of newspaper.paragraphs">
+            <ng-container *ngIf="paragraph.thumbnail != undefined">
+              <div class="paragraph_image">
+                <img [src]="pathImageFile + paragraph.thumbnail" alt="">
+              </div>
+              <p class="paragraph_fig_caption">{{paragraph.figCaption}}</p>
+            </ng-container>
+            <p class="paragraph_body">{{paragraph.content}}</p>
+          </div>
+        </div>
+        <div class="newspaper_footer">
+          <span class="newspaper_footer_topic">Chủ đề: {{newspaper.topic}}</span>
+          <span class="newspaper_footer_origin">Nguồn: {{newspaper.origin}}</span>
+          <span class="newspaper_footer_author" *ngIf="newspaper.author != undefined">Tác giả: {{newspaper.author}}</span>
+        </div>
+      </div>
+  </div>
+    
+  </div>
+

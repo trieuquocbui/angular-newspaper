@@ -24,10 +24,27 @@
 
 }
 
+.back{
+    cursor: pointer;
+    height: 100%;
+    border: none;
+    border-radius: 6px;
+    width: 26px;
+    background-color: var(--one-primary-color);
+    color: var(--white-color);
+}
+
+.back:hover{
+    background-color: var(--active-color);
+}
+
 .tool_bar_left_search{
+    padding: 10px;
     width: 100%;
     height: inherit;
+    border-radius: 10px;
 }
+
 
 .text-select{
     font-size: 16px;

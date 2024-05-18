@@ -1,0 +1,59 @@
+<div class="grid wide">
+  <div class="row-offset-20" style="justify-content: center;">
+    <div class="col-offset-20 l-10 mt-30">
+      <form class="row mb-20 form " [formGroup]="user" >
+        <div class="l-3">
+          <div class="profile-form-container">
+            <div class="profile-image">
+              <img [src]="this.thumbnail" alt="Profile Image">
+              <div class="change-image-text" >
+                Chỉnh sữa ảnh
+              </div>
+              <input type="file" class="image-upload" title="" (change)="onImageChange($event)">
+            </div>
+          </div>
+        </div>
+        <div class="row l-9">
+          <div class="form_controller l-12 ml-20">
+            <div class="form_controller_container">
+              <label class="form_controller_lable l-12">Tên tài khoản</label>
+              <input formControlName="username" type="text" class="form_controller_input l-12">
+            </div>
+            <div class="form_controller_error">
+            </div>
+          </div>
+          <div class="form_controller l-12 ml-20">
+            <div class="form_controller_container">
+              <label class="form_controller_lable l-12">Họ và tên</label>
+              <input (click)="cancleError()" formControlName="fullName" type="text" class="form_controller_input l-12">
+              <button (click)="cancleDisable()" class="form_controller_btn"><i class="fa-solid fa-pen-to-square"></i></button>
+            </div>
+          
+            <div class="form_controller_error">
+              <span *ngIf="f['fullName'].errors && f['fullName'].errors['required']  && submited ">Vui nhập họ và tên</span>
+            </div>
+          </div>         
+          <div *ngIf="showBtnSubmit" class="form_controller l-12" style="flex-direction: row;justify-content: end;">
+            <div class="l-12">
+              <button class="btn" (click)="saveProfile()">Cập nhật thông tin</button>
+            </div>
+          </div>
+        </div>
+      </form>
+      
+    </div>
+  </div>
+</div>
+
+<ng-container *ngIf="messageSucces != ''" 
+[appModal]="'notification'" 
+[positionClose]="1"
+[widthSize]="'20%'"
+[openModal]="true" >
+
+  <ng-template #notification>
+    {{messageSucces}}
+  </ng-template>
+
+  <app-modal [modelId]="'notification'" [template]="notification" [showBtn]="false"></app-modal>
+</ng-container>   

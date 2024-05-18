@@ -1,14 +1,13 @@
 .header{
     font-size: 16px;
     height: 60px;
-    border-bottom: 1px solid var(--border-color);
+    background: linear-gradient(90deg, var(--one-primary-color), var(--two-primary-color));
 }
 
 .header_nav{
     height: 100%;
     display: flex;
     align-items: center;
-    
 }
 
 .header_nav_link{
@@ -18,7 +17,7 @@
     padding: 0px 10px;
     font-size: 18px;
     text-decoration: none;
-    color: var(--text-color);
+    color: var(--white-color);
 }
 
 .header_nav_link.active{
