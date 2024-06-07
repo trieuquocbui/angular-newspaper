@@ -70,8 +70,9 @@ export class AddOriginComponent implements OnInit, IDeactivateComponent {
         next: value =>{
           if(value.code == CodeEnum.SUCCESS){
             this.messageSucces = value.message;
+            this.submited = false;
+            this.originForm.reset();
           }
-          
         },
         error: err=>{
           const code = err.error.code;
@@ -82,6 +83,7 @@ export class AddOriginComponent implements OnInit, IDeactivateComponent {
             }
         }
       })
+      
     }
   }
 

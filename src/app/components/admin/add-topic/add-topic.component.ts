@@ -70,6 +70,8 @@ export class AddTopicComponent implements OnInit,IDeactivateComponent {
         next: value =>{
           if(value.code == CodeEnum.SUCCESS){
             this.messageSucces = value.message;
+            this.submited = false;
+            this.topicForm.reset();
           }
         },
         error: err=>{

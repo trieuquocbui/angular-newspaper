@@ -26,7 +26,11 @@
               <span class="newspaper_footer_author" *ngIf="newspaper.author != undefined">Tác giả: {{newspaper.author}}</span>
             </div>
           </div>
+          <div class="notebook" #notebook (click)="saveBookMark(newspaper.id!)">
+            <i class="fa-solid fa-bookmark"></i>
+          </div>
       </div>
+
       </div>
       <div class="col-offset-20 l-3 mt-30">
         <h1 class="other_newspaper_set_title">Bài báo khác</h1>

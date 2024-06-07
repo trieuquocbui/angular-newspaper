@@ -192,10 +192,13 @@ export class AddNewspaperComponent implements OnInit, IDeactivateComponent {
         next:value=>{
           if(value.code == CodeEnum.SUCCESS){
             this.messageSucces = value.message;
+            this.submited = false;
+            this.newspaperForm.reset();
           }
         },
         error:err=>{
           const code = err.error.code;
+          console.log(err.error);
            if(code == CodeEnum.ERROR_NAME_EXIST){
             this.messageErrorName = err.error.message;
           }

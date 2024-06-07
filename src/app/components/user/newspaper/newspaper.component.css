@@ -131,3 +131,19 @@
     font-size: 18px;
     font-weight: 600;
 } */
+
+.box_newspaper{
+    position: relative;
+}
+
+.notebook{
+    cursor: pointer;
+    position: absolute;
+    top:20px;
+    right: 20px;
+    font-size: 24px;
+}
+
+.notebook i{
+    color: var(--bookmark-color);
+}

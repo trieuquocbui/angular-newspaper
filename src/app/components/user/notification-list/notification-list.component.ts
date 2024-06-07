@@ -27,6 +27,11 @@ export class NotificationListComponent implements OnInit, OnDestroy {
       stompClient.subscribe('/newspaper/notification', notifications => {
         this.notificationList = [JSON.parse(notifications.body),...this.notificationList];
       })
+
+      stompClient.subscribe('/newspaper/delete/notification',message =>{
+        let newspaperId = JSON.parse(message.body);
+        this.notificationList = this.notificationList.filter(notification => notification.newspaperId != newspaperId);
+      })
     });
    }
 

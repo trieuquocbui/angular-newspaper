@@ -69,6 +69,8 @@ table {
 	--border-color:#d8d8d8;
 	--btn-color:#26469b;
 	--topic-set-text-color:#5468a0;
+    --saved-bookmark-color: #FFD700;
+    --bookmark-color: #808080;
 }
 
 .mb-16{

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AppEnum } from 'src/app/helpers/app';
 import { CodeEnum } from 'src/app/helpers/code';
@@ -13,6 +13,7 @@ import { Params } from 'src/app/models/params';
   styleUrls: ['./newspaper.component.css','../../../../assets/css/newspaper.css']
 })
 export class NewspaperComponent implements OnInit {
+  @ViewChild('notebook') notebook!: ElementRef;
   newspaper:NewspaperModel = new NewspaperModel();
   newspaperList:NewspaperModel[] = [];
   imageList:string[] = [];
@@ -58,6 +59,19 @@ export class NewspaperComponent implements OnInit {
 
   back(){
     this.location.back();
+  }
+
+  saveBookMark(newspaperId:string) {
+    const rootStyles = getComputedStyle(document.documentElement);
+    const bookmarkColor = rootStyles.getPropertyValue('--bookmark-color').trim();
+    const savedBookmarkColor = rootStyles.getPropertyValue('--saved-bookmark-color').trim();
+    console.log(this.notebook.nativeElement.lastElementChild.style.color)
+    if( this.notebook.nativeElement.lastElementChild.style.color == bookmarkColor){
+      this.notebook.nativeElement.lastElementChild.style.color = savedBookmarkColor;
+    } else{
+      this.notebook.nativeElement.lastElementChild.style.color = bookmarkColor;
+    }
+    
   }
 
 }

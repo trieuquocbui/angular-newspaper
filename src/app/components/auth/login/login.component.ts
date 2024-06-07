@@ -57,6 +57,7 @@ export class LoginComponent implements OnInit {
             
           },
           error: err =>{
+            console.log(err.error);
             const code = err.error.code;
             if(code === CodeEnum.ERR0R_ENTITY_NOTFOUND){
               this.messageUsernameError = err.error.message;

@@ -6,6 +6,7 @@ import { UserModel } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 import { Location } from '@angular/common';
 import { AppEnum } from 'src/app/helpers/app';
+import { CodeEnum } from 'src/app/helpers/code';
 
 @Component({
   selector: 'app-account',
@@ -46,9 +47,11 @@ export class AccountComponent implements OnInit {
         return this.userService.getUserList(search,this.currentPageNumber,this.offset,this.sortBy,this.sortDir);
       })
     ).subscribe(result =>{
-        this.currentPageNumber = result.pageNumber + 1;
-        this.userList = result.content;
-        this.totalPageNumber = result.totalPages;
+      if(result.code == CodeEnum.SUCCESS){
+        this.currentPageNumber = result.data.pageNumber + 1;
+        this.userList = result.data.content;
+        this.totalPageNumber = result.data.totalPages;
+      }
     })
   }
 
@@ -56,9 +59,11 @@ export class AccountComponent implements OnInit {
     this.userService.getUserList(this.search,this.currentPageNumber,this.offset,this.sortBy,this.sortDir).subscribe(
       {
         next:value =>{
-          this.currentPageNumber = value.pageNumber + 1;
-          this.userList = value.content;
-          this.totalPageNumber = value.totalPages;
+          if(value.code == CodeEnum.SUCCESS){
+            this.currentPageNumber = value.data.pageNumber + 1;
+            this.userList = value.data.content;
+            this.totalPageNumber = value.data.totalPages;
+          }
         },
         error:err=>{
           
