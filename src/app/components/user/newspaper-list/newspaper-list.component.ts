@@ -45,7 +45,7 @@ export class NewspaperListComponent implements OnInit, OnChanges {
       }
       this.topic = this.topicName.trim();
       this.origin = this.originName.trim();
-      this.getDate(check);
+      this.getData(check);
     }
   }
 
@@ -70,7 +70,7 @@ export class NewspaperListComponent implements OnInit, OnChanges {
     })
   }
 
-  getDate(check:boolean){
+  getData(check:boolean){
     const params: Params ={
       page: this.page,
       limit: this.offset,
@@ -110,7 +110,7 @@ export class NewspaperListComponent implements OnInit, OnChanges {
 
   showNewspaper(){
     ++this.page;
-    this.getDate(false);
+    this.getData(false);
   }
 
 }

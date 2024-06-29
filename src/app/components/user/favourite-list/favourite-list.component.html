@@ -1,0 +1,29 @@
+<div class="grid wide">
+  <div class="row-offset-20">
+    <div class="col-offset-20 l-9 mt-30">
+      <h1 class="desc">Các bài báo bạn đã lưu</h1>
+      <div class="box">
+        <div *ngIf="favouriteList.length == 0">không tìm thấy thông báo nào</div>
+        <div class="box_notification" *ngIf="favouriteList.length > 0">
+          <div class="notification row">
+            <a class="col l-12 notification_item" [routerLink]="'/newspaper/' + favourite.newspaper.id" *ngFor="let favourite of favouriteList; let i = index">
+            <div class="notification_image_box p-r-10">
+              <img class="notification_image" [src]="imageList[i]" alt="">
+            </div>
+          <div class="notification_info">
+        <div class="notification_title">{{favourite.newspaper.name}}</div>
+        <div class="notification_time-up">
+          <span>{{favourite.newspaper.datetime! | dateFormat}}</span>
+        </div>
+      </div>
+            </a>
+          </div>
+        <div class="show">
+          <button *ngIf="show" class="show-btn" (click)="showNewspaper()"><span>Xem thêm</span><main></main></button>
+        </div>
+</div>
+      </div>
+    </div>
+    
+  </div>
+</div>

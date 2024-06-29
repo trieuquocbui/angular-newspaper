@@ -19,6 +19,7 @@ import { ShareModule } from '../share-module/share-module.module';
 import { UserBoxComponent } from '../common/user-box/user-box.component';
 import { DropdownDirective } from 'src/app/directives/dropdown.directive';
 import { NotificationListComponent } from './notification-list/notification-list.component';
+import { FavouriteListComponent } from './favourite-list/favourite-list.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { NotificationListComponent } from './notification-list/notification-list
         FooterComponent,
         SliderDirective,
         NewspaperListComponent,
-        NotificationListComponent
+        NotificationListComponent,
+        FavouriteListComponent
     ],
     imports: [
         CommonModule,

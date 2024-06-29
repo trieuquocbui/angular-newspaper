@@ -1,11 +1,14 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AppEnum } from 'src/app/helpers/app';
 import { CodeEnum } from 'src/app/helpers/code';
 import { NewspaperModel } from 'src/app/models/newspaper';
 import { NewspaperService } from 'src/app/services/newspaper.service';
 import { Location } from '@angular/common';
 import { Params } from 'src/app/models/params';
+import { AuthService } from 'src/app/services/auth.service';
+import { UserModel } from 'src/app/models/user';
+import { FavouriteService } from 'src/app/services/favourite.service';
 
 @Component({
   selector: 'app-newspaper',
@@ -13,13 +16,15 @@ import { Params } from 'src/app/models/params';
   styleUrls: ['./newspaper.component.css','../../../../assets/css/newspaper.css']
 })
 export class NewspaperComponent implements OnInit {
+  userModel:UserModel = new UserModel();
   @ViewChild('notebook') notebook!: ElementRef;
   newspaper:NewspaperModel = new NewspaperModel();
+  rootStyles = getComputedStyle(document.documentElement);
   newspaperList:NewspaperModel[] = [];
   imageList:string[] = [];
   pathImageFile:string = AppEnum.PATH_IMAGE_FIME;
   newspaperId!:string;
-  constructor(private route:ActivatedRoute,private newspaperService:NewspaperService,private location: Location) { }
+  constructor(private route:ActivatedRoute,private favouriteService:FavouriteService,private newspaperService:NewspaperService,private location: Location,private authService:AuthService,private router:Router) { }
 
   ngOnInit():void {
     this.route.params.subscribe(params => {
@@ -27,6 +32,25 @@ export class NewspaperComponent implements OnInit {
       this.findById(this.newspaperId);
       this.getRandNewspaper();
     });
+
+    let isLogin = this.authService.isLoggedIn();
+    if(isLogin){
+      this.authService.getUser().subscribe({
+        next:value=>{
+          this.userModel = value;
+          let isExistFavouriteNewspaper = this.userModel.favouriteList.find((item) => {
+              return item.newspaper.id == this.newspaperId;
+          })
+          if(!isExistFavouriteNewspaper){
+            const bookmarkColor = this.rootStyles.getPropertyValue('--bookmark-color').trim();
+            this.notebook.nativeElement.lastElementChild.style.color = bookmarkColor;
+          } else{
+            const savedBookmarkColor = this.rootStyles.getPropertyValue('--saved-bookmark-color').trim();
+            this.notebook.nativeElement.lastElementChild.style.color = savedBookmarkColor;
+          }
+        }
+      });
+    }
   }
 
   findById(id:string):void{
@@ -61,17 +85,50 @@ export class NewspaperComponent implements OnInit {
     this.location.back();
   }
 
-  saveBookMark(newspaperId:string) {
-    const rootStyles = getComputedStyle(document.documentElement);
-    const bookmarkColor = rootStyles.getPropertyValue('--bookmark-color').trim();
-    const savedBookmarkColor = rootStyles.getPropertyValue('--saved-bookmark-color').trim();
-    console.log(this.notebook.nativeElement.lastElementChild.style.color)
-    if( this.notebook.nativeElement.lastElementChild.style.color == bookmarkColor){
-      this.notebook.nativeElement.lastElementChild.style.color = savedBookmarkColor;
-    } else{
-      this.notebook.nativeElement.lastElementChild.style.color = bookmarkColor;
+  handleBookMark(newspaperId:string) {
+    if(!this.authService.isLoggedIn()){
+      this.router.navigate(["/login"]);
+    }else{
+      this.authService.getUser().subscribe({
+        next:value=>{
+          this.userModel = value;
+          let handleBookMark = this.userModel.favouriteList.find(item =>{
+            return item.newspaper.id == newspaperId;
+          })
+          if(handleBookMark){
+            this.favouriteService.deleteFavouriteNewspaper(newspaperId,this.authService.getUsername()).subscribe({
+              next:value=>{
+                if(value.code == CodeEnum.SUCCESS){
+                  console.log(value.message);
+                  const bookmarkColor = this.rootStyles.getPropertyValue('--bookmark-color').trim();
+                  this.notebook.nativeElement.lastElementChild.style.color = bookmarkColor;
+                }
+              },
+              error:err=>{
+                console.log(err)
+              }
+            })
+          }else{
+            this.favouriteService.saveFavouriteNewspaper(this.newspaper,this.authService.getUsername()).subscribe({
+              next:value=>{
+                if(value.code == CodeEnum.SUCCESS){
+                  console.log(value.message);
+                  const savedBookmarkColor = this.rootStyles.getPropertyValue('--saved-bookmark-color').trim();
+                  this.notebook.nativeElement.lastElementChild.style.color = savedBookmarkColor;
+                }
+              },
+              error:err=>{
+                console.log(err)
+              }
+            })
+          }
+        }
+      });
+      
+  
     }
     
+  
   }
 
 }

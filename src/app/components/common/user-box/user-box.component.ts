@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { DropdownDirective } from 'src/app/directives/dropdown.directive';
@@ -11,11 +12,11 @@ import { UserService } from 'src/app/services/user.service';
   selector: 'app-user-box',
   templateUrl: './user-box.component.html',
   styleUrls: ['./user-box.component.css'],
-  imports:[RouterModule,DropdownDirective],
+  imports:[RouterModule,DropdownDirective,CommonModule],
   standalone:true,
 })
 export class UserBoxComponent implements OnInit {
-
+  public role!:string;
   private username:string = this.authService.getUsername();
   public thumbnail:string = AppEnum.PATH_IMAGE_FIME;
   public user:UserModel = new UserModel();
@@ -34,6 +35,7 @@ export class UserBoxComponent implements OnInit {
         }
       }
     })
+    this.role = this.authService.getRole();
   }
 
   logout(){

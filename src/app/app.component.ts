@@ -7,6 +7,7 @@ import { AuthService } from './services/auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  title = 'newspaper-reader';
   constructor(private authService:AuthService){
     this.checkLoginStatus();
   }

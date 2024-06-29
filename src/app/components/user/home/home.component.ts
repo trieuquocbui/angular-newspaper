@@ -3,6 +3,7 @@ import { Subject } from 'rxjs';
 import { AppEnum } from 'src/app/helpers/app';
 import { CodeEnum } from 'src/app/helpers/code';
 import { NewspaperModel } from 'src/app/models/newspaper';
+import { FavouriteService } from 'src/app/services/favourite.service';
 import { NewspaperService } from 'src/app/services/newspaper.service';
 
 @Component({
@@ -16,9 +17,10 @@ export class HomeComponent implements OnInit {
   selectedTopicName:string = AppEnum.DEFAULT_ALL;
   selectedOriginName:string = AppEnum.DEFAULT_ALL;
   
-  constructor(private newspaperService:NewspaperService) { }
+  constructor(private newspaperService:NewspaperService,private favouriteService:FavouriteService) { }
 
   ngOnInit() {
+    
   }
 
   search($event: string) {

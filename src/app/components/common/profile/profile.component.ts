@@ -27,7 +27,7 @@ export class ProfileComponent implements OnInit {
   })
 
   ngOnInit() {
-    
+
     this.userService.getUser(this.username).subscribe({
       next:value=>{
         if(value.code == CodeEnum.SUCCESS){
@@ -77,16 +77,13 @@ export class ProfileComponent implements OnInit {
             }
             this.thumbnail = AppEnum.PATH_IMAGE_FIME + value.data.thumbnail;
             this.f['fullName'].setValue(value.data.fullName);
-
           },
           error:err=>{
             const code = err.error.code;
            if(code == CodeEnum.ERROR_NAME_EXIST){
             this.messageErrorUsername = err.error.message;
             }
-            
           }
-
         })
       }
     }

@@ -35,7 +35,7 @@ export class NewspaperComponent implements OnInit {
       this.currentPageNumber = params['page'] || PagenationEnum.DEFAULT_PAGE;
       this.offset = params['offset'] || PagenationEnum.DEFAULT_LIMIT;
       this.sortBy = params['sortBy'] || PagenationEnum.DEFAULT_SORTBY;
-      this.sortDir = params['sortDir'] || PagenationEnum.DEFAULT_SORTDIR;
+      this.sortDir = params['sortDir'] || "desc";
       this.loadingData();
     })
 

@@ -7,6 +7,9 @@
         <div class="user_box_item">
             <a [routerLink]="['profile/',user.username]"   class="user_box_link">Hồ sơ</a>
         </div>
+        <div class="user_box_item" *ngIf="role == 'USER'">
+          <a [routerLink]="['favourite/',user.username]"   class="user_box_link">Đã lưu</a>
+      </div>
         <div class="user_box_item">
             <a (click)="logout()"  class="user_box_link">Thoát</a>
         </div>
